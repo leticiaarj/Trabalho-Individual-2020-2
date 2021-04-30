@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=myproject
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose: 
+      - "5432"
+
+  api:
+    build: ./api/
+    command: bash -c "wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.1.1/wait-for | sh -s -- db:5432 -- echo Success && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./api:/api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./client/
+    command: /bin/sh -c "yarn && quasar dev"
+    volumes:
+      - ./client:/frontend/
+      - /frontend/node_modules
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
