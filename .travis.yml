@@ -25,9 +25,6 @@ jobs:
       - docker-compose run client yarn quasar test --unit jest
       - docker-compose run api ./test_api.sh
 
-after_script:
-  - docker-compose down --remove-orphans
-
 after_success:
   - codecov
 
