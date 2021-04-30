@@ -23,10 +23,16 @@ jobs:
     - stage: test
       script:
       - docker-compose run client yarn quasar test --unit jest
-      - docker-compose run api ./test_api.sh
+      - docker-compose run api ./testes.sh
 
 after_success:
   - codecov
+  
+deploy:
+  provider: heroku
+  api_key:
+    secure: "75bd45e5-8afb-4d4f-a717-f6a3d77c9d29"
+  app: gcesprojetofinal
 
 
 

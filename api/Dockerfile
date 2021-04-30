@@ -11,6 +11,9 @@ WORKDIR /api
 ADD . /api/
 COPY requirements.txt manage.py api task /api/
 
+COPY testes.sh /testes.sh
+RUN chmod +x /testes.sh
+
 RUN pip install -r requirements.txt
 RUN apt-get update
 
