@@ -17,8 +17,3 @@ script:
 after_script:
   - docker-compose down --remove-orphans
 
-deploy:
-  provider: heroku
-  api-key:
-  	-secure: $SECURE_KEY
-  app: $APP 
