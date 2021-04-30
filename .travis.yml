@@ -26,8 +26,7 @@ jobs:
       - docker-compose run api /api/testes.sh
 deploy:
   provider: heroku
-  api_key:
-    - secure: $HEROKU_KEY     
+  api_key: $HEROKU_KEY     
   app: gcesprojetofinal 
 
 after_success:
