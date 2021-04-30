@@ -27,12 +27,3 @@ jobs:
 
 after_success:
   - codecov
-  
-deploy:
-  provider: heroku
-  api_key:
-    secure: "75bd45e5-8afb-4d4f-a717-f6a3d77c9d29"
-  app: gcesprojetofinal
-
-
-
