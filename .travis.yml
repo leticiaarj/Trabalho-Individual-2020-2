@@ -13,7 +13,7 @@ sudo: required
 
 before_install:
   - pip3 install docker-compose
-  - chmod +x testes.sh
+  - chmod +x ./testes.sh
 
 jobs:
   include:
