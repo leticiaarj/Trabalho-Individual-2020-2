@@ -24,11 +24,11 @@ jobs:
       script:
       - docker-compose run client yarn quasar test --unit jest
       - docker-compose run api /api/testes.sh
-deploy:
-  provider: heroku
-  api_key: $HEROKU_KEY     
-  app: gcesprojetofinal
-  skip_cleanup: true 
+#deploy:
+  #provider: heroku
+  #api_key: $HEROKU_KEY     
+  #app: gcesprojetofinal
+  #skip_cleanup: true 
 
 after_success:
   - codecov
