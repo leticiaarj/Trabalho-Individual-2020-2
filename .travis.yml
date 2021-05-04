@@ -1,7 +1,7 @@
-language: generic #pro travis ser mais rápido
+language: python
 
-#python:
-  #- 3.6
+python:
+  - 3.6
 
 services:
   - docker
@@ -10,24 +10,13 @@ sudo: required
 
 env:
   - DOCKER_COMPOSE_VERSION=1.26.2
-  #- CODECOV_TOKEN='37b15870-5f46-4979-a623-066056c0ebbd'
 
 before_install:
   - pip3 install docker-compose
-  - chmod +x api/testes.sh
   
-install: pip install codecov
-
 jobs:
   include:
     - stage: build
       script:
-      - docker-compose up -d --build
-    
-    - stage: test
-      script:
-      - docker-compose run client quasar test --unit jest
-      - docker-compose run api ./testes.sh
+      - docker-compose up -d --build   
       
-after_success:
-  - codecov
