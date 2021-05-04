@@ -1,7 +1,7 @@
-language: python
+language: generic #pro travis ser mais rápido
 
-python:
-  - 3.6
+#python:
+  #- 3.6
 
 services:
   - docker
