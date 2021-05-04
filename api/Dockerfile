@@ -15,4 +15,4 @@ COPY testes.sh /testes.sh
 RUN chmod +x /testes.sh
 
 RUN pip install -r requirements.txt
-RUN apt-get update
+RUN apt-get update 
