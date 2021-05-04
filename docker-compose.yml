@@ -22,7 +22,7 @@ services:
     depends_on:
       - db
 
-  frontend:
+  client:
     build: ./client/
     command: /bin/sh -c "yarn && quasar dev"
     volumes:
