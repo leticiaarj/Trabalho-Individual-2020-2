@@ -19,6 +19,7 @@ jobs:
     - stage: build
       script:
       - docker-compose up -d --build
+<<<<<<< HEAD
     - stage: test
       script:
       - yarn quasar test --unit jest
@@ -26,6 +27,14 @@ jobs:
 
 after_script:
   - docker-compose down --remove-orphans
+=======
+      
+deploy:
+  provider: heroku
+  api_key: $HEROKU_KEY     
+  app: gcesprojetofinal
+  skip_cleanup: true 
+>>>>>>> 143eaaf1d6f4f61edbf559edcdc7cdc030f095f2
       
 deploy:
   provider: heroku
