@@ -8,9 +8,14 @@ services:
 
 sudo: required
 
+env:
+  - DOCKER_COMPOSE_VERSION=1.26.2
+  - CODECOV_TOKEN='37b15870-5f46-4979-a623-066056c0ebbd'
+
 before_install:
   - pip3 install docker-compose
   - chmod +x api/testes.sh
+  install: pip install codecov
 
 jobs:
   include:
@@ -22,3 +27,6 @@ jobs:
       script:
       - docker-compose run client yarn quasar test --unit jest
       - docker-compose run api ./testes.sh
+      
+after_success:
+  - codecov

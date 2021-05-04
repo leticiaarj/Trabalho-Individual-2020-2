@@ -6,6 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 RUN apt-get update
 RUN apt install -y netcat
 
+RUN mkdir /api
 WORKDIR /api
 
 COPY requirements.txt manage.py api task /api/
@@ -14,4 +15,4 @@ COPY testes.sh /testes.sh
 RUN chmod +x /testes.sh
 
 RUN pip install -r requirements.txt
-COPY . /api/
+RUN apt-get update

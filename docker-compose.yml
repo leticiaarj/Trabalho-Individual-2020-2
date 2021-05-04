@@ -22,13 +22,14 @@ services:
     depends_on:
       - db
 
-  frontend:
+  client:
     build: ./client/
-    command: /bin/sh -c "yarn && quasar dev"
-    volumes:
-      - ./client:/frontend/
-      - /frontend/node_modules
-    ports:
+    container_name: client-container
+    restart: always
+    volumes: 
+      - ./client:/client
+    ports: 
       - "8080:8080"
+      
 volumes:
   postgres_data:
