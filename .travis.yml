@@ -13,14 +13,13 @@ env:
 
 before_install:
   - pip3 install docker-compose
-  - cd /api
   
 jobs:
   include:
     - stage: build
       script:
       - docker-compose up -d --build
-    - stage: tests
+    - stage: test
       script:
       - yarn quasar test --unit jest
       - docker-compose run api ./test_api.sh
