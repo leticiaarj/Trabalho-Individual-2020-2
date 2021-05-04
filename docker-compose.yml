@@ -30,6 +30,7 @@ services:
       - ./client:/client
     ports: 
       - "8080:8080"
+    command: /bin/sh -c "yarn && quasar dev"
       
 volumes:
   postgres_data:
