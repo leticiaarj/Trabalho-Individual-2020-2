@@ -18,5 +18,17 @@ jobs:
   include:
     - stage: build
       script:
-      - docker-compose up -d --build   
+      - docker-compose up -d --build
+    - stage: test
+      script:
+      - yarn quasar test --unit jest
+      - docker-compose run api ./test_api.sh
+
+after_script:
+  - docker-compose down --remove-orphans
       
+deploy:
+  provider: heroku
+  api_key: $HEROKU_KEY     
+  app: gcesprojetofinal
+  skip_cleanup: true 
