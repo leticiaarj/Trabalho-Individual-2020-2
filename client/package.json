@@ -5,6 +5,10 @@
   "productName": "Quasar App",
   "author": "Ezequiel <ezequiel1de1oliveira@gmail.com>",
   "private": true,
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
@@ -15,12 +19,15 @@
     "test:unit:watchAll": "jest --watchAll",
     "serve:test:coverage": "quasar serve test/jest/coverage/lcov-report/ --port 8788",
     "concurrently:dev:jest": "concurrently \"quasar dev\" \"jest --watch\""
+    "build": "quasar build",
+    "start": "node server.js"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "serve-static": "^1.14.1"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
