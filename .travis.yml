@@ -13,7 +13,7 @@ env:
 
 before_install:
   - pip3 install docker-compose
-  - before_script: cd /api
+  - cd /api
   
 jobs:
   include:
