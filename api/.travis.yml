@@ -1,0 +1,36 @@
+language: python
+
+python:
+  - 3.6
+
+services:
+  - docker
+
+env:
+  - CODECOV_TOKEN='37b15870-5f46-4979-a623-066056c0ebbd'
+
+sudo: required
+
+before_install:
+  - pip3 install docker-compose
+  - chmod +x api/testes.sh
+
+jobs:
+  include:
+    - stage: build
+      script:
+      - docker-compose up -d --build
+    
+    - stage: test    
+      script:
+      - docker-compose run client yarn quasar test --unit jest
+      - docker-compose run api /api/testes.sh
+
+#deploy:
+  #provider: heroku
+  #api_key: $HEROKU_KEY     
+  #app: gcesprojetofinal
+  #skip_cleanup: true 
+
+after_success:
+  - codecov
