@@ -10,7 +10,7 @@ sudo: required
 
 env:
   - DOCKER_COMPOSE_VERSION=1.26.2
-  - CODECOV_TOKEN='37b15870-5f46-4979-a623-066056c0ebbd'
+  #- CODECOV_TOKEN='37b15870-5f46-4979-a623-066056c0ebbd'
 
 before_install:
   - pip3 install docker-compose
