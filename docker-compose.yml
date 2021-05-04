@@ -9,6 +9,8 @@ services:
       - POSTGRES_PASSWORD=password
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - db.env
     expose: 
       - "5432"
 
@@ -19,6 +21,8 @@ services:
       - ./api:/api
     ports:
       - "8000:8000"
+    env_file:
+      - db.env
     depends_on:
       - db
 
