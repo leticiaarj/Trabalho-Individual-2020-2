@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: API CI
+name: CI API
 
 on: [push, pull_request]
 
@@ -18,26 +18,26 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - name: Checkout code
+      - name: Verificacao Codigo
         uses: actions/checkout@v2
-      - name: Cache dependency
+      - name: Depedencia Cache
         uses: actions/cache@v2
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-      - name: Setup python environment
+      - name: Config Ambiente Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.x"
-      - name: Check Python version
+      - name: Versionamento Python
         run: python --version
         working-directory: api
-      - name: Install requirements
+      - name: Instalacao requirements
         run: pip install -r requirements.txt
         working-directory: api
-      - name: Run Migrations
+      - name: Migracoes
         run: python manage.py migrate
         working-directory: api
         env:
@@ -46,7 +46,7 @@ jobs:
           POSTGRES_DB: github-actions
           POSTGRES_HOST: localhost
           POSTGRES_PORT: 5432
-      - name: Run Test
+      - name: Testes
         run: python manage.py test
         working-directory: api
         env:
