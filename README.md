@@ -10,7 +10,7 @@
 - Client: [file](https://github.com/leticiaarj/Trabalho-Individual-2020-2/blob/master/client/Dockerfile)
 - Docker-compose: [file](https://github.com/leticiaarj/Trabalho-Individual-2020-2/blob/master/docker-compose.yml)
 
-![image](https://raw.githubusercontent.com/leticiaarj/Trabalho-Individual-2020-2/master/imagens/ci_1.PNG)
+![image](https://raw.githubusercontent.com/leticiaarj/Trabalho-Individual-2020-2/master/imagens/docker-compose.PNG)
 
 ## Integração Contínua
 
